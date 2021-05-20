@@ -1,0 +1,184 @@
+onsider the database for an organisation. Write the queries for the following:
+ 
+
+(i)	create the database.
+
+	create database DBMSLAB;
+	Query OK, 1 row affected (0.04 sec)
+	mysql> show databases;
+ +--------------------+
+   | Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+6 rows in set (0.01 sec)
+
+
+(ii)	select the current database.
+
+	 use dbmslab;
+	Database changed
+
+
+(iii)Create the following tables.
+a.	employee (emp_no,emp_name,DOB, address, doj, mobile_no, dept_no, salary).
+	mysql> create table employee(emp_no int(200) NOT NULL PRIMARY KEY,emp_name varchar(200) NOT NULL,DOB date NOT NULL,address varchar(200) NOT NULL,DOJ date NOT NULL,mob_no int(200) NOT NULL,dept_no int(200) DEFAULT NULL,salary int(200) NOT NULL);
+	Query OK, 0 rows affected, 4 warnings (0.11 sec)
+
+mysql> DESC employee;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| emp_no   | int          | NO   | PRI | NULL    |       |
+| emp_name | varchar(200) | NO   |     | NULL    |       |
+| DOB      | date         | NO   |     | NULL    |       |
+| address  | varchar(200) | NO   |     | NULL    |       |
+| DOJ      | date         | NO   |     | NULL    |       |
+| mob_no   | int          | NO   |     | NULL    |       |
+| dept_no  | int          | YES  |     | NULL    |       |
+| salary   | int          | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+
+
+b.	department (dept_no, dept_name, location).
+
+	mysql> create table department(dept_no int(200) NOT NULL,dept_name varchar(200) NOT NULL,location varchar(200) NOT NULL);
+	Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql> desc department;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| dept_no   | int          | NO   |     | NULL    |       |
+| dept_name | varchar(200) | NO   |     | NULL    |       |
+| location  | varchar(200) | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+
+
+
+(iv)	Include necessary constraints.
+
+
+(v)	List all the tables in the current database.
+	mysql> show tables;
++-------------------+
+| Tables_in_dbmslab |
++-------------------+
+| department        |
+| employee          |
++-------------------+
+2 rows in set (0.03 sec)
+
+
+
+(vi)	Display the structure of the employee table.
+
+	mysql> DESC employee;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| emp_no   | int          | NO   | PRI | NULL    |       |
+| emp_name | varchar(200) | NO   |     | NULL    |       |
+| DOB      | date         | NO   |     | NULL    |       |
+| address  | varchar(200) | NO   |     | NULL    |       |
+| DOJ      | date         | NO   |     | NULL    |       |
+| mob_no   | int          | NO   |     | NULL    |       |
+| dept_no  | int          | YES  |     | NULL    |       |
+| salary   | int          | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+
+
+
+
+(vii)	Add a new column Designation to the employee table.
+
+	mysql> alter table employee add designation varchar(200);
+	Query OK, 0 rows affected (0.05 sec)
+	Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| emp_no      | int          | NO   | PRI | NULL    |       |
+| emp_name    | varchar(200) | NO   |     | NULL    |       |
+| DOB         | date         | NO   |     | NULL    |       |
+| address     | varchar(200) | NO   |     | NULL    |       |
+| DOJ         | date         | NO   |     | NULL    |       |
+| mob_no      | int          | NO   |     | NULL    |       |
+| dept_no     | int          | YES  |     | NULL    |       |
+| salary      | int          | NO   |     | NULL    |       |
+| designation | varchar(200) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+9 rows in set (0.01 sec)
+
+
+
+(viii)	Drop the column location from Dept table.
+	mysql> alter table department drop column location;
+	Query OK, 0 rows affected (0.04 sec)
+	Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc department;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| dept_no   | int          | NO   |     | NULL    |       |
+| dept_name | varchar(200) | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+
+
+
+(ix)	Drop the tables.
+
+	mysql> drop table department;
+	Query OK, 0 rows affected (0.08 sec)
+
+	mysql> drop table employee;
+	Query OK, 0 rows affected (0.03 sec)
+
+
+
+(x)	Delete the database.
+
+	mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| dbmslab            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> drop database dbmslab;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+6 rows in set (0.01 sec)
